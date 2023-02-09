@@ -31,9 +31,9 @@ public class PlayerController : CharacterController
     {
         // Move
         float speed = 0;
-        if (Input.GetKey(OperationBinder.Instance.LeftMove.TriggerKey))
+        if (InputHandler.GetInput(OperationBinder.Instance.LeftMove))
             speed -= _character.MoveSpeed;
-        if (Input.GetKey(OperationBinder.Instance.RightMove.TriggerKey))
+        if (InputHandler.GetInput(OperationBinder.Instance.RightMove))
             speed += _character.MoveSpeed;
         float step = Time.deltaTime * speed;
 
@@ -46,14 +46,14 @@ public class PlayerController : CharacterController
         transform.position += Vector3.right * step;
 
         // Jump
-        if (Input.GetKey(OperationBinder.Instance.Jump.TriggerKey) && !_isJumping)
+        if (InputHandler.GetInput(OperationBinder.Instance.Jump) && !_isJumping)
         {
             _isJumping = true;
             _rigidbody2D.velocity = Vector2.up * _character.JumpVelocity;
         }
 
         // Attack
-        if (Input.GetKeyDown(OperationBinder.Instance.Attack.TriggerKey))
+        if (InputHandler.GetInput(OperationBinder.Instance.Attack))
         {
             _animator.SetTrigger("Attack");
         }
