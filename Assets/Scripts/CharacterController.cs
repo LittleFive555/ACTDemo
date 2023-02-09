@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
@@ -9,7 +9,7 @@ public class CharacterController : MonoBehaviour
     {
         _character = character;
     }
-
+    
     public virtual void GetHurt()
     {
         Debug.LogFormat("{0} get hurt.", gameObject.name);
