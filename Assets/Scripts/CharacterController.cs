@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
     protected Character _character;
+    public Character Character => _character;
 
     public void SetCharacter(Character character)
     {
