@@ -18,6 +18,6 @@ public class StateIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _text.text = FSMExecutor.CurrentStateHandler.ActionState.ToString();
+        _text.text = FSMExecutor.CurrentState.ToString();
     }
 }

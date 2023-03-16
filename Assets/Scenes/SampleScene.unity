@@ -1325,6 +1325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fsmStateTransitions: {fileID: 11400000, guid: 402e713ab7261f84484bdebfb1a3fe9e, type: 2}
+  _playerController: {fileID: 1769219154}
 --- !u!4 &1769219156
 Transform:
   m_ObjectHideFlags: 0

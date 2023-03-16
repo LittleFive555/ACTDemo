@@ -90,11 +90,9 @@ public class PlayerController : CharacterController
         return _rigidbody2D.velocity.y;
     }
 
-    public IEnumerator AttackAnim()
+    public void AttackAnim()
     {
         _animator.SetTrigger("Attack");
-        
-        yield return new WaitForSeconds(0.5f);
     }
 
     /// <summary>

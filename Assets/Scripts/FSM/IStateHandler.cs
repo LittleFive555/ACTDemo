@@ -11,8 +11,7 @@ public enum ActionState
 
 public interface IStateHandler
 {
-    public ActionState ActionState { get; }
-    public bool IsDone { get; }
-    public IEnumerator Excute();
-    public void ShutDown();
+    public void Enter();
+    public void Exit();
+    public void Update();
 }

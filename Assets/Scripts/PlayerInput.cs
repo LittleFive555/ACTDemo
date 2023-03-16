@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     private FSMExecutor _fsmExecutor;
 
-    public ActionState CurrentState => _fsmExecutor.CurrentStateHandler?.ActionState ?? ActionState.None;
+    public ActionState CurrentState => _fsmExecutor.CurrentState;
 
     private void Update()
     {
@@ -21,7 +21,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (_fsmExecutor.CanEnterState(ActionState.Attack, CurrentState))
             {
-                _fsmExecutor.DoState(new StateAttack(_playerController));
+                _fsmExecutor.DoState( ActionState.Attack);
                 return;
             }
         }
@@ -30,7 +30,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (_fsmExecutor.CanEnterState(ActionState.Jump, CurrentState))
             {
-                _fsmExecutor.DoState(new StateJump(_playerController));
+                _fsmExecutor.DoState( ActionState.Jump);
                 return;
             }
         }
@@ -39,7 +39,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (_fsmExecutor.CanEnterState(ActionState.Move, CurrentState))
             {
-                _fsmExecutor.DoState(new StateMove(_playerController));
+                _fsmExecutor.DoState( ActionState.Move);
                 return;
             }
         }
@@ -52,6 +52,6 @@ public class PlayerInput : MonoBehaviour
         if (!_fsmExecutor.CanEnterState(ActionState.Idle, CurrentState))
             return;
 
-        _fsmExecutor.DoState(new StateIdle(_playerController));
+        _fsmExecutor.DoState( ActionState.Idle);
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class FSMExecutor : MonoBehaviour
@@ -6,29 +5,39 @@ public class FSMExecutor : MonoBehaviour
     [SerializeField]
     private FSMStateTransitions _fsmStateTransitions;
 
-    public IStateHandler CurrentStateHandler { get; private set; }
-    private Coroutine _currentStateCoroutine = null;
+    [SerializeField]
+    private PlayerController _playerController;
+
+    private StateMachine _stateMachine = new StateMachine();
+
+    public ActionState CurrentState { get; private set; }
+
+    private void Awake()
+    {
+        _stateMachine.AddState(ActionState.Idle, new StateIdle(_playerController));
+        _stateMachine.AddState(ActionState.Move, new StateMove(_playerController));
+        _stateMachine.AddState(ActionState.Jump, new StateJump(_playerController));
+        _stateMachine.AddState(ActionState.Attack, new StateAttack(_playerController));
+    }
+
+    private void Start()
+    {
+        DoState(ActionState.Idle);
+    }
+
+    private void Update()
+    {
+        _stateMachine.Update();
+    }
 
     public bool CanEnterState(ActionState targetState, ActionState currentState)
     {
         return _fsmStateTransitions.CouldEnter(targetState, currentState);
     }
 
-    public void DoState(IStateHandler state)
+    public void DoState(ActionState stateEnum)
     {
-        if (_currentStateCoroutine != null)
-            StopCoroutine(_currentStateCoroutine);
-        _currentStateCoroutine = StartCoroutine(DoStateCoroutine(state));
-    }
-
-    public void ShutDown()
-    {
-        CurrentStateHandler?.ShutDown();
-    }
-
-    private IEnumerator DoStateCoroutine(IStateHandler state)
-    {
-        CurrentStateHandler = state;
-        yield return state.Excute();
+        CurrentState = stateEnum;
+        _stateMachine.SetState(stateEnum);
     }
 }
