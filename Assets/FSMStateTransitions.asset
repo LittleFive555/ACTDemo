@@ -14,12 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transtions:
   - State: 1
-    CanEnterFromStates: 00000000020000000500000004000000
+    CanEnterFromStates: 00000000020000000400000003000000
   - State: 2
     CanEnterFromStates: 010000000400000002000000
   - State: 3
     CanEnterFromStates: 0100000002000000
-  - State: 5
-    CanEnterFromStates: 03000000
   - State: 4
     CanEnterFromStates: 0100000002000000

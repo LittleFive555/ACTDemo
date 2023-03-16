@@ -212,9 +212,9 @@ GameObject:
   - component: {fileID: 61343328}
   - component: {fileID: 61343327}
   - component: {fileID: 61343329}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1173,9 +1173,9 @@ GameObject:
   - component: {fileID: 1645463695}
   - component: {fileID: 1645463694}
   - component: {fileID: 1645463693}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1307,6 +1307,11 @@ MonoBehaviour:
   _modelRoot: {fileID: 18724336}
   _animator: {fileID: 18724335}
   _attackCollider: {fileID: 18724334}
+  _collider2D: {fileID: 1769219158}
+  _groundedLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _groundedRaycastDistance: 0.1
 --- !u!114 &1769219155
 MonoBehaviour:
   m_ObjectHideFlags: 0
