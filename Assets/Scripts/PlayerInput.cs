@@ -35,7 +35,7 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-        if (InputHandler.GetHoldingInput(OperationBinder.Instance.LeftMove) || InputHandler.GetHoldingInput(OperationBinder.Instance.RightMove))
+        if (_playerController.IsGrounded() && (InputHandler.GetHoldingInput(OperationBinder.Instance.LeftMove) || InputHandler.GetHoldingInput(OperationBinder.Instance.RightMove)))
         {
             if (_fsmExecutor.CanEnterState(ActionState.Move, CurrentState))
             {
@@ -44,7 +44,8 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-        Idle();
+        if (_playerController.IsGrounded())
+            Idle();
     }
 
     public void Idle()
